@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -64,15 +65,15 @@ class BeerControllerTest {
                                         parameterWithName("iscold").description("is Beer Cold Query param")
                                 ),
                                 responseFields(
-                                        fieldWithPath("id").description("Id of Beer"),
-                                        fieldWithPath("version").description("Version number"),
-                                        fieldWithPath("createdDate").description("Date Created"),
-                                        fieldWithPath("lastModifiedDate").description("Date Updated"),
+                                        fieldWithPath("id").description("Id of Beer").type(UUID.class),
+                                        fieldWithPath("version").description("Version number").type(Integer.class),
+                                        fieldWithPath("createdDate").description("Date Created").type(OffsetDateTime.class),
+                                        fieldWithPath("lastModifiedDate").description("Date Updated").type(OffsetDateTime.class),
                                         fieldWithPath("beerName").description("Beer Name"),
-                                        fieldWithPath("beerStyle").description("Beer Style"),
+                                        fieldWithPath("beerStyle").description("Beer Style").type(BeerStyleEnum.class),
                                         fieldWithPath("upc").description("UPC of Beer"),
                                         fieldWithPath("price").description("Price"),
-                                        fieldWithPath("quantityOnHand").description("Quantity On hand")
+                                        fieldWithPath("quantityOnHand").description("Quantity On hand").type(Integer.class)
                                 )
                        ));
     }
@@ -95,7 +96,7 @@ class BeerControllerTest {
                                         fields.withPath("createdDate").ignored(),
                                         fields.withPath("lastModifiedDate").ignored(),
                                         fields.withPath("beerName").description("Name of the beer"),
-                                        fields.withPath("beerStyle").description("Style of Beer"),
+                                        fields.withPath("beerStyle").description("Style of Beer").type(BeerStyleEnum.class),
                                         fields.withPath("upc").description("Beer UPC").attributes(),
                                         fields.withPath("price").description("Beer Price"),
                                         fields.withPath("quantityOnHand").ignored()
