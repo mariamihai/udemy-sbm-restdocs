@@ -1,4 +1,4 @@
-= SBM Brewery Order Service Docs
+= SBM Brewery Service Docs
 Maria Mihai;
 :doctype: book
 :icons: font
@@ -6,7 +6,7 @@ Maria Mihai;
 
 Sample application demonstrating how to use Spring REST Docs with JUnit 5.
 
-`BeerOrderControllerTest` makes a call to a very simple service and produces three
+`BeerControllerTest` makes a call to a very simple service and produces two
 documentation snippets.
 
 GET BEER
