@@ -56,7 +56,7 @@ class BeerControllerTest {
                 .param("iscold", "yes") // doesn't exist, just for example, will be ignored
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andDo(document("v1/beer",
+                .andDo(document("v1/beer-get",
                                 pathParameters(
                                         parameterWithName("beerId").description("UUID of the desired beer to get")
                                 ),
@@ -88,7 +88,7 @@ class BeerControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(beerDtoJson))
                 .andExpect(status().isCreated())
-                .andDo(document("v1/beer",
+                .andDo(document("v1/beer-post",
                                 requestFields(
                                         fields.withPath("id").ignored(),
                                         fields.withPath("version").ignored(),
